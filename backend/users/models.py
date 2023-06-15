@@ -16,10 +16,10 @@ class User(models.Model):
         editable=False,
     )
 
-    email = models.CharField(max_length=255)
+    email = models.CharField(unique=True, max_length=255)
     password = models.CharField()
-    name = models.CharField(max_length=255)
-    surname = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
     gender = models.ChoiceField(
         choices = GenderChoices.choices,
         default = GenderChoices.PREFER_NOT_SAY
@@ -27,7 +27,13 @@ class User(models.Model):
 
     birthdate = models.DateTimeField()
     created_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(auto_now = True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    avatarPhoto = models.ImageField(upload_to='random/', null=True, blank=True)
+    avatarPhoto = models.ImageField(
+        upload_to='random/', 
+        null=True, 
+        blank=True
+    )
+
+
 
