@@ -1,0 +1,41 @@
+repos:
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: npx
+        args:
+          - eslint
+          - --fix
+          - --config
+          - frontend/.eslintrc.yml
+        language: node
+        types: [javascript]
+        pass_filenames: false
+        files: frontend/
+        exclude: node_modules, build,fdist, coverage
+
+      - id: prettier
+        name: prettier
+        entry: npx
+        args:
+          - prettier
+          - --write
+          - "**/*.{js,jsx,json,md}"
+        language: node
+        types: [javascript, json, markdown]
+        pass_filenames: true
+        require_serial: true
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: black
+        args: ["--line-length", "79", "."]
+        language: system
+        types: [python]
+        pass_filenames: false
+        files: backend/
+        exclude: migrations/, staticfiles/, venv/, .*\.pyc$, .*\.pyo$, .*\.egg-info/
+
