@@ -21,12 +21,17 @@ class ListUsersView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
+
 class TokenCreateView(APIView):
     def post(self, request, *args, **kwargs):
         try:
             user = User.objects.get(username=request.data.get("username"))
-            print(100 * "=")
-            print(user)
+            
             if check_password(request.data.get("password"), user.password):
                 payload = {
                     "user_id": str(user.id),
