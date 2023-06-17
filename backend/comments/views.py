@@ -1,11 +1,9 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
-# from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import AllowAny
 
 from .serializers import CommentSerializer
 from .models import Comment
-from .authentication.custom_auth import (
+from users.authentication.custom_auth import (
     CustomJWTAuthentication,
     IsOwnerOrReadOnly,
 )
@@ -13,25 +11,27 @@ from .authentication.custom_auth import (
 # Create your views here.
 
 
-class ListCommentsView(generics.ListAPIView):
+class ListCreateCommentsView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
+    authentication_classes = [CustomJWTAuthentication]
+    permission_classes = [AllowAny]
+
+    def get_authenticators(self):
+        if self.request.method == 'POST':
+            return [CustomJWTAuthentication()]
+        
+        return super().get_authenticators()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class ListUserCommentsView(generics.ListAPIView):
     serializer_class = CommentSerializer
-
+    
     def get_queryset(self):
-        return Comment.objects.filter(author_id=self.kwargs["user_id"])
-
-
-class CreateCommentView(generics.CreateAPIView):
-    serializer_class = CommentSerializer
-    queryset = Comment.objects.all()
-
-    def perform_create(self, serializer):
-        serializer.save(author_id=self.kwargs.get("pk"))
-
+        return Comment.objects.filter(author_id=self.kwargs["pk"])
 
 class DetailCommentView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
