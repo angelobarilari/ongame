@@ -10,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ["user_id"]
 
     user_id = serializers.IntegerField(read_only=True)
-    # is_admin = serializers.BooleanField(write_only=True)
     username = serializers.EmailField(max_length=255)
     password = serializers.CharField(write_only=True)
     name = serializers.CharField(max_length=100)

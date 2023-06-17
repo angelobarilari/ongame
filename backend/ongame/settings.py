@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "comments.authentication.custom_auth.CustomJWTAuthentication",
+        "users.authentication.custom_auth.CustomJWTAuthentication",
     ],
 }
 
