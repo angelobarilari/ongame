@@ -1,12 +1,13 @@
-from users.serializers import UserSerializer, LoginSerializer
+from users.serializers import UserSerializer, AdminSerializer, LoginSerializer
 from users.models import User
 
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAdminUser
 from rest_framework.authtoken.views import ObtainAuthToken
 
-from .utils.auth_utils import authenticate_user
+from .authentication.authenticate_user import authenticate_user
+
 
 # Create your views here.
 
@@ -18,11 +19,11 @@ class CreateUserView(generics.CreateAPIView):
 
 class CreateAdminView(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    serializer_class = AdminSerializer
+    permission_classes = [IsAdminUser]
 
     def perform_create(self, serializer):
-        serializer.save(is_admin=True)
+        serializer.save(is_staff=True)
 
 
 class ListUsersView(generics.ListAPIView):
