@@ -25,19 +25,23 @@ class DetailUserlView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
 class CustomObtainAuthToken(ObtainAuthToken):
     serializer_class = LoginSerializer
-    
+
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
 
         serializer.is_valid(raise_exception=True)
 
         token = authenticate_user(
-            serializer.validated_data['username'], 
-            serializer.validated_data['password']
+            serializer.validated_data["username"],
+            serializer.validated_data["password"],
         )
-        
+
         if token:
-            return Response({'token': token})
-        return Response({'error': 'Unable to log in with provided credentials.'}, status=400)
+            return Response({"token": token})
+        return Response(
+            {"error": "Unable to log in with provided credentials."},
+            status=400,
+        )

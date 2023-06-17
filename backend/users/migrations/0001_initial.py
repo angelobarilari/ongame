@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="User",
             fields=[
-                ("user_id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "user_id",
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ("username", models.EmailField(max_length=255, unique=True)),
                 ("password", models.TextField()),
                 ("name", models.CharField(max_length=100)),
@@ -35,14 +38,23 @@ class Migration(migrations.Migration):
                     "created_at",
                     models.DateTimeField(
                         default=datetime.datetime(
-                            2023, 6, 16, 2, 11, 24, 88651, tzinfo=datetime.timezone.utc
+                            2023,
+                            6,
+                            16,
+                            2,
+                            11,
+                            24,
+                            88651,
+                            tzinfo=datetime.timezone.utc,
                         )
                     ),
                 ),
                 ("updated_at", models.DateTimeField(auto_now=True)),
                 (
                     "avatarPhoto",
-                    models.ImageField(blank=True, null=True, upload_to="random/"),
+                    models.ImageField(
+                        blank=True, null=True, upload_to="random/"
+                    ),
                 ),
             ],
         ),
