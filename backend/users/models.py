@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import PermissionsMixin
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class GenderChoices(models.TextChoices):
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
-    is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     username = models.EmailField(unique=True, max_length=255)
     password = models.TextField()
     name = models.CharField(max_length=100)
@@ -27,4 +28,6 @@ class User(models.Model):
     created_at = models.DateTimeField(default=timezone.now())
     updated_at = models.DateTimeField(auto_now=True)
 
-    avatarPhoto = models.ImageField(upload_to="random/", null=True, blank=True)
+    avatarImage = models.ImageField(
+        upload_to="avatarImage/", null=True, blank=True
+    )

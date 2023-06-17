@@ -4,6 +4,12 @@ import os
 import sys
 
 
+def createadmin():
+    from django.core.management import execute_from_command_line
+
+    execute_from_command_line(["manage.py", "createadmin"])
+
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ongame.settings")

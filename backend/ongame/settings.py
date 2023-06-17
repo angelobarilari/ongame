@@ -45,9 +45,13 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "users.authentication.custom_auth.CustomJWTAuthentication",
+        "users.authentication.custom_jwt_auth.CustomJWTAuthentication",
     ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    "users.backends.CustomModelBackend",
+]
 
 SIMPLE_JWT = {
     "USER_ID_FIELD": "user_id",

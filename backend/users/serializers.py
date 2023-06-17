@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
+        exclude = ["is_staff"]
         read_only_fields = ["user_id"]
 
     user_id = serializers.IntegerField(read_only=True)
@@ -30,25 +30,24 @@ class UserSerializer(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        is_admin = validated_data.pop("is_admin", False)
+        validated_data["password"] = make_password(validated_data["password"])
 
-        if not self.context["request"].user.is_admin:
-            raise serializers.ValidationError(
-                {
-                    "Detail": "You do not have permission to create an administrator."
-                }
-            )
+        return User.objects.create(**validated_data)
 
-        password = validated_data.pop("password")
-        validated_data["password"] = make_password(password)
 
-        user = User.objects.create(**validated_data)
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"
+        read_only_fields = ["user_id"]
+        extra_kwargs = {
+            "password": {"write_only": True},
+        }
 
-        if is_admin:
-            user.is_admin = True
-            user.save()
+    def create(self, validated_data):
+        validated_data["is_staff"] = True
 
-        return user
+        return User.objects.create(**validated_data)
 
 
 class LoginSerializer(serializers.Serializer):

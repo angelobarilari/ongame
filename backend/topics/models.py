@@ -1,14 +1,22 @@
 from django.db import models
+from django.utils import timezone
 
-import uuid
+from users.models import User
 
 # Create your models here.
 
 
 class Topic(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        unique=True,
-        default=uuid.uuid4,
-        editable=False,
+    topic_id = models.AutoField(primary_key=True)
+
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="topics",
+    )
+
+    subject = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now())
+    topicImage = models.ImageField(
+        upload_to="topicImage/", null=True, blank=True
     )
