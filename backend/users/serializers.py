@@ -30,16 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        request = self.context.get("request")
-        is_authenticated = request and request.user.is_authenticated
-
-        if is_authenticated and not request.user.is_staff:
-            raise serializers.ValidationError(
-                {"Detail": "You do not have permission to create a user with is_staff=True."}
-            )
-
-        password = validated_data.pop("password")
-        validated_data["password"] = make_password(password)
+        validated_data["password"] = make_password(validated_data["password"])
 
         return User.objects.create(**validated_data)
 
