@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-import uuid
 
 # Create your models here.
 
@@ -12,12 +11,7 @@ class GenderChoices(models.TextChoices):
 
 
 class User(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        unique=True,
-        default=uuid.uuid4,
-        editable=False,
-    )
+    user_id = models.AutoField(primary_key=True)
 
     username = models.EmailField(unique=True, max_length=255)
     password = models.TextField()

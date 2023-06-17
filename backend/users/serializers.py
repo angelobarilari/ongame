@@ -7,8 +7,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+        read_only_fields = ['user_id']
 
-    id = serializers.UUIDField(read_only=True)
+    user_id = serializers.IntegerField(read_only=True)
     username = serializers.EmailField(max_length=255)
     password = serializers.CharField(write_only=True)
     name = serializers.CharField(max_length=100)
@@ -34,3 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create(**validated_data)
 
         return user
+    
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(write_only = True)
+    password = serializers.CharField(write_only = True)

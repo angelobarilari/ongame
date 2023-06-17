@@ -1,16 +1,15 @@
-from users.serializers import UserSerializer
+from users.serializers import UserSerializer, LoginSerializer
 from users.models import User
 
 from rest_framework import generics
-from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 
-from django.contrib.auth.hashers import check_password
-
-import jwt
-import datetime
+from .utils.auth_utils import authenticate_user
 
 # Create your views here.
+
 
 class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
@@ -22,28 +21,23 @@ class ListUsersView(generics.ListAPIView):
     queryset = User.objects.all()
 
 
-class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+class DetailUserlView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-
-class TokenCreateView(APIView):
+class CustomObtainAuthToken(ObtainAuthToken):
+    serializer_class = LoginSerializer
+    
     def post(self, request, *args, **kwargs):
-        try:
-            user = User.objects.get(username=request.data.get("username"))
-            
-            if check_password(request.data.get("password"), user.password):
-                payload = {
-                    "user_id": str(user.id),
-                    "username": user.username,
-                    "exp": datetime.datetime.utcnow()
-                    + datetime.timedelta(days=1),
-                }
+        serializer = self.serializer_class(data=request.data)
 
-                token = jwt.encode(payload, "secret_key", algorithm="HS256")
+        serializer.is_valid(raise_exception=True)
 
-                return Response({"token": token})
-
-            return Response({"Detail": "Invalid credentials"}, status=400)
-        except User.DoesNotExist:
-            return Response({"Detail": "Invalid credentials"}, status=400)
+        token = authenticate_user(
+            serializer.validated_data['username'], 
+            serializer.validated_data['password']
+        )
+        
+        if token:
+            return Response({'token': token})
+        return Response({'error': 'Unable to log in with provided credentials.'}, status=400)
