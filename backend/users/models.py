@@ -12,7 +12,7 @@ class GenderChoices(models.TextChoices):
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
-
+    is_admin = models.BooleanField(default=False)
     username = models.EmailField(unique=True, max_length=255)
     password = models.TextField()
     name = models.CharField(max_length=100)
