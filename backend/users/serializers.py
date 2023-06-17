@@ -32,11 +32,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         is_admin = validated_data.pop("is_admin", False)
-        
+
         if not self.context["request"].user.is_admin:
-            raise serializers.ValidationError({
-                "Detail": "You do not have permission to create an administrator."
-                })
+            raise serializers.ValidationError(
+                {
+                    "Detail": "You do not have permission to create an administrator."
+                }
+            )
 
         password = validated_data.pop("password")
         validated_data["password"] = make_password(password)

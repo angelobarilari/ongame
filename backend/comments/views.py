@@ -22,7 +22,7 @@ class ListUserCommentsView(generics.ListAPIView):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
-        return Comment.objects.filter(author_id=self.kwargs['user_id'])
+        return Comment.objects.filter(author_id=self.kwargs["user_id"])
 
 
 class CreateCommentView(generics.CreateAPIView):

@@ -22,12 +22,13 @@ class AdminJWTAuthentication(JWTAuthentication):
             try:
                 user = User.objects.get(user_id=user_id)
 
-                if user.is_admin: 
+                if user.is_admin:
                     return user
             except User.DoesNotExist:
                 pass
 
         return None
+
 
 class IsOwnerOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -35,4 +36,3 @@ class IsOwnerOrReadOnly(BasePermission):
             return True
 
         return obj.author == request.user
-
