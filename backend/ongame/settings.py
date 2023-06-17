@@ -20,7 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-i64_edai+aq)=tv94xg%f=$!%ec6r$pi+)vq@v&!1a71tw9o6q"
+SECRET_KEY = (
+    "my_secret_key"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,9 +33,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "users",
     "topics",
     "comments",
-    "users",
     "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -42,6 +44,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'comments.authentication.custom_auth.CustomJWTAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'user_id',
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -91,7 +103,6 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
 }
-
 
 
 # Password validation
