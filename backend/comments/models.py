@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 from users.models import User
+from topics.models import Topic
 
 # Create your models here.
 
@@ -11,6 +12,10 @@ class Comment(models.Model):
 
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="comments"
+    )
+
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="comments"
     )
 
     content = models.TextField()

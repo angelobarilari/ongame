@@ -1,5 +1,5 @@
-from users.serializers import UserSerializer, AdminSerializer, LoginSerializer
-from users.models import User
+from .serializers import UserSerializer, AdminSerializer, LoginSerializer
+from .models import User
 
 from rest_framework import generics
 from rest_framework.response import Response
