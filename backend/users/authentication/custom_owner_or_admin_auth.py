@@ -14,7 +14,7 @@ class IsOwnerOrAdminOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
 
-        if request.user.is_staff or obj.author == request.user:
+        if request.user.is_staff or obj == request.user:
             return True
 
         return False
