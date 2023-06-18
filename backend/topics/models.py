@@ -3,8 +3,6 @@ from django.utils import timezone
 
 from users.models import User
 
-# Create your models here.
-
 
 class Topic(models.Model):
     topic_id = models.AutoField(primary_key=True)

@@ -4,8 +4,6 @@ from django.utils import timezone
 from users.models import User
 from topics.models import Topic
 
-# Create your models here.
-
 
 class Comment(models.Model):
     comment_id = models.AutoField(primary_key=True)

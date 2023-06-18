@@ -5,12 +5,19 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from users.authentication.custom_jwt_auth import CustomJWTAuthentication
-from users.authentication.custom_owner_auth import IsOwnerOrReadOnly
+from users.authentication.custom_owner_or_admin_auth import (
+    IsOwnerOrAdminOrReadOnly,
+)
 
-# Create your views here.
+from topics.models import Topic
 
 
-class ListCreateCommentsView(generics.ListCreateAPIView):
+class ListCommentsViews(generics.ListAPIView):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
+
+
+class CreateCommentsView(generics.CreateAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
     authentication_classes = [CustomJWTAuthentication]
@@ -23,9 +30,8 @@ class ListCreateCommentsView(generics.ListCreateAPIView):
         return super().get_authenticators()
 
     def perform_create(self, serializer):
-        print(100 * "=")
-        print(self.request.user)
-        serializer.save(author=self.request.user)
+        topic = Topic.objects.get(topic_id=self.kwargs.get("pk"))
+        serializer.save(author=self.request.user, topic=topic)
 
 
 class ListUserCommentsView(generics.ListAPIView):
@@ -40,4 +46,4 @@ class DetailCommentView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
 
     authentication_classes = [CustomJWTAuthentication]
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrAdminOrReadOnly]

@@ -7,9 +7,8 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.authtoken.views import ObtainAuthToken
 
 from .authentication.authenticate_user import authenticate_user
-
-
-# Create your views here.
+from .authentication.custom_jwt_auth import CustomJWTAuthentication
+from .authentication.custom_owner_or_admin_auth import IsOwnerOrAdminOrReadOnly
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -34,6 +33,9 @@ class ListUsersView(generics.ListAPIView):
 class DetailUserlView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+    authentication_classes = [CustomJWTAuthentication]
+    permission_classes = [IsOwnerOrAdminOrReadOnly]
 
 
 class CustomObtainAuthToken(ObtainAuthToken):
