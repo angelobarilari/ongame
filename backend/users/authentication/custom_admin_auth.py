@@ -8,10 +8,11 @@ class AdminJWTAuthentication(JWTAuthentication):
         user_id = validated_token.get("user_id")
 
         if user_id:
+            print("VTNCCCCCCC")
             try:
                 user = User.objects.get(user_id=user_id)
 
-                if user.is_admin:
+                if user.is_staff:
                     return user
             except User.DoesNotExist:
                 pass

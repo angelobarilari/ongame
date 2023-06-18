@@ -5,6 +5,8 @@ from users.serializers import UserSerializer
 from categories.serializers import CategorySerializer
 from categories.models import Category
 
+from comments.serializers import CommentSerializer
+
 from .models import Topic
 
 
@@ -18,6 +20,7 @@ class TopicSerializer(serializers.ModelSerializer):
     subject = serializers.CharField()
     author = UserSerializer(read_only=True)
     category = CategorySerializer(read_only=True, many=True)
+    comments = CommentSerializer(read_only=True, many=True)
 
     def create(self, validated_data):
         category_id = validated_data.pop("category_id")

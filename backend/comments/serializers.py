@@ -8,7 +8,7 @@ from .models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = "__all__"
+        fields = ["comment_id", "content", "author"]
         read_only_fields = ["author", "comment_id"]
 
     comment_id = serializers.IntegerField(read_only=True)

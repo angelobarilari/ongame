@@ -5,8 +5,9 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from users.authentication.custom_jwt_auth import CustomJWTAuthentication
-
-# Create your views here.
+from users.authentication.custom_owner_or_admin_auth import (
+    IsOwnerOrAdminOrReadOnly,
+)
 
 
 class ListCreateTopicView(generics.ListCreateAPIView):
@@ -26,3 +27,11 @@ class ListCreateTopicView(generics.ListCreateAPIView):
             author=self.request.user,
             category_id=self.request.data.get("category"),
         )
+
+
+class DetailTopicView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TopicSerializer
+    queryset = Topic.objects.all()
+
+    authentication_classes = [CustomJWTAuthentication]
+    permission_classes = [IsOwnerOrAdminOrReadOnly]
