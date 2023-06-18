@@ -12,6 +12,7 @@ class Command(BaseCommand):
             cursor.execute(
                 "SELECT COUNT(*) FROM users_user WHERE is_staff = true"
             )
+
             count = cursor.fetchone()[0]
 
             if count == 0:

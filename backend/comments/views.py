@@ -1,8 +1,9 @@
+from .serializers import CommentSerializer
+from .models import Comment
+
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
-from .serializers import CommentSerializer
-from .models import Comment
 from users.authentication.custom_jwt_auth import CustomJWTAuthentication
 from users.authentication.custom_owner_auth import IsOwnerOrReadOnly
 
@@ -22,6 +23,8 @@ class ListCreateCommentsView(generics.ListCreateAPIView):
         return super().get_authenticators()
 
     def perform_create(self, serializer):
+        print(100 * "=")
+        print(self.request.user)
         serializer.save(author=self.request.user)
 
 

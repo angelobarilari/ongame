@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "users",
     "topics",
     "comments",
+    "categories",
     "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",
