@@ -18,6 +18,7 @@ class TopicSerializer(serializers.ModelSerializer):
 
     topic_id = serializers.IntegerField(read_only=True)
     subject = serializers.CharField()
+    content = serializers.CharField()
     author = UserSerializer(read_only=True)
     category = CategorySerializer(read_only=True, many=True)
     comments = CommentSerializer(read_only=True, many=True)
