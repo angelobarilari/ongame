@@ -1,0 +1,29 @@
+.landing-page {
+    display: flex;
+    background-color: red;
+}
+
+.topics-box {
+    flex-direction: column;
+    height: 97%;
+    background-color: var(--grey-3);
+    overflow-y: auto;
+}
+
+.auth-box {
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--grey-3);
+    padding: 5px;
+}
+
+.sign-up-text-box {
+    width: 100%;
+}
+
+.topics-text-box > span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+

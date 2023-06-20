@@ -1,0 +1,36 @@
+.home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    min-height: 350px;
+    width: 40%;
+    
+    padding: 10px 0px 10px 0px;
+    background-color: var(--grey-3);
+}
+
+.user-data-box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.user-data-box > p {
+    margin: 5px 0px;
+}
+
+.edit-box-btns {
+    display: flex;
+}
+
+
