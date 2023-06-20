@@ -14,6 +14,7 @@ class Topic(models.Model):
     )
 
     subject = models.TextField()
+    content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now())
     topicImage = models.ImageField(
         upload_to="topicImage/", null=True, blank=True

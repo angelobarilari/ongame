@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "comments",
     "categories",
     "rest_framework",
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -63,6 +64,7 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -71,6 +73,14 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "ongame.urls"
 
@@ -96,14 +106,25 @@ WSGI_APPLICATION = "ongame.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("POSTGRES_DB"),
+#         "USER": os.getenv("POSTGRES_USERNAME"),
+#         "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+#         "HOST": os.getenv("POSTGRES_HOST"),
+#         "PORT": os.getenv("POSTGRES_PORT"),
+#     },
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB"),
-        "USER": os.getenv("POSTGRES_USERNAME"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("POSTGRES_HOST"),
-        "PORT": os.getenv("POSTGRES_PORT"),
+        "NAME": "ongame",
+        "USER": "postgres",
+        "PASSWORD": "1234",
+        "HOST": "localhost",
+        "PORT": "5432",
     },
 }
 
