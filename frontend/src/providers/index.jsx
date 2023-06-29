@@ -2,7 +2,7 @@ import { CategoriesDataProvider } from "./categories";
 import { TopicsDataProvider } from "./topics";
 import { UserDataProvider } from "./users";
 
-const Provider = ({ children }) => {
+function Provider ({ children })  {
     return (
         <TopicsDataProvider>
             <CategoriesDataProvider>

@@ -21,7 +21,9 @@ function Topic({ match }) {
     const [topicDetails, setTopicDetails] = useState(null);
     const [newComment, setNewComment] = useState("");
 
-    const handleCommentSubmit = () => {
+    const handleCommentSubmit = (event) => {
+        event.preventDefault()
+        // console.log(newComment, topicId)
         postComment(newComment, topicId);
         setNewComment("");
     };
@@ -32,7 +34,7 @@ function Topic({ match }) {
             .catch((err) => console.log(err.response.data));
     }, [topicId]);
 
-    if (!topicDetails) window.location.href = "/"
+    if (!topicDetails) return <p>Not found</p>
 
     return (
         <>
@@ -84,9 +86,9 @@ function Topic({ match }) {
                             <Button
                                 className="comment-btn"
                                 minWidth="100%"
-                                background="var(--purple-1)"
+                                background="var(--orange-1)"
                                 color="var(--white)"
-                                hover="var(--purple-2)"
+                                hover="var(--orange-2)"
                                 type="submit"
                             >
                                 Comment

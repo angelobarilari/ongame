@@ -23,9 +23,9 @@ function Header({ children, ...rest }) {
                 <Button
                     className="logout-btn"
                     margin="unset"
-                    background="var(--purple-1)"
+                    background="var(--orange-1)"
                     color="var(--white)"
-                    hover="var(--purple-2)"
+                    hover="var(--orange-2)"
                     children={"Logout"}
                     onClick={() => handleLogout()}
                 />
@@ -33,9 +33,9 @@ function Header({ children, ...rest }) {
                 <Button
                     className="login-btn"
                     margin="unset"
-                    background="var(--purple-1)"
+                    background="var(--orange-1)"
                     color="var(--white)"
-                    hover="var(--purple-2)"
+                    hover="var(--orange-2)"
                     children={"Login"}
                     onClick={() => (window.location.href = "/login")}
                 />

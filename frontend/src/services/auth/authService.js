@@ -10,7 +10,7 @@ export const loginReq = (formdata) => {
         .post("login/", data)
         .then((res) => {
             localStorage.setItem("ongame-token", res.data.token);
-            window.location.href = "/home";
+            window.location.href = "/dashboard";
         })
         .catch((err) => console.log(err.response.data));
 };

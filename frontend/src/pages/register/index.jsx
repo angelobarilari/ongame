@@ -122,9 +122,9 @@ function Register() {
                         <Button
                             className="register-btn"
                             minWidth="100%"
-                            background="var(--purple-1)"
+                            background="var(--orange-1)"
                             color="var(--white)"
-                            hover="var(--purple-2)"
+                            hover="var(--orange-2)"
                             type="submit"
                             onSubmit={() => registerReq()}
                         >
