@@ -14,3 +14,10 @@ export const loginReq = (formdata) => {
         })
         .catch((err) => console.log(err.response.data));
 };
+
+export const registerReq = (formdata) => {
+    apiUrl
+        .post("users/register/user/", formdata)
+        .then((res) => loginReq(formdata))
+        .catch((err) => console.log(err.response.data));
+};

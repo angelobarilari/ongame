@@ -5,7 +5,7 @@ import TopicDetails from "../../pages/topic";
 import Box from "../Box";
 import "./style.css";
 
-const Topics = () => {
+function Topics () {
     const { topics } = useContext(TopicsDataContext);
     const [selectedTopicId, setSelectedTopicId] = useState(null);
     const [topicDetails, setTopicDetails] = useState(null);

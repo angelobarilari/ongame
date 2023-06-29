@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-export const CategoriesDataContext = createContext([]);
+const CategoriesDataContext = createContext([]);
 
-export const CategoriesDataProvider = ({ children }) => {
+const CategoriesDataProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
 
     return (
@@ -16,3 +16,5 @@ export const CategoriesDataProvider = ({ children }) => {
         </CategoriesDataContext.Provider>
     );
 };
+
+export { CategoriesDataContext, CategoriesDataProvider }

@@ -1,11 +1,14 @@
+import React, { useEffect, useContext } from "react";
+
 import DefaultPage from "../../components/DefaultPage";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
+import Topics from "../../components/Topics";
 import Box from "../../components/Box";
-import React, { useEffect, useContext } from "react";
+
 import { getTopics } from "../../services/topics/topicsService";
 import { TopicsDataContext } from "../../providers/topics";
-import Topics from "../../components/Topics";
+
 import "./style.css";
 
 function Landing() {

@@ -1,11 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
+
 import DefaultPage from "../../components/DefaultPage";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Box from "../../components/Box";
-import { postTopic } from "../../services/topics/topicsService";
-import { CategoriesDataContext } from "../../providers/categories";
+
 import { getCategories } from "../../services/categories/categoriesService";
+import { postTopic } from "../../services/topics/topicsService";
+
+import { CategoriesDataContext } from "../../providers/categories";
+
 import "./style.css";
 
 function CreateTopic() {

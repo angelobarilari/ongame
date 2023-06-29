@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyledHeader } from "./style";
 import Button from "../Button";
+import Box from "../Box";
 
 function Header({ children, ...rest }) {
     const token = localStorage.getItem("ongame-token");
@@ -12,11 +13,11 @@ function Header({ children, ...rest }) {
 
     return (
         <StyledHeader {...rest}>
-            <div id="header-container">
-                <Link to="/" id="logo-container">
-                    <h1 id="logo">OnGame Forum</h1>
+            <Box className="header-container" shadow="unset">
+                <Link to="/" className="logo-container">
+                    <h1 className="logo">OnGame Forum</h1>
                 </Link>
-            </div>
+            </Box>
 
             {token ? (
                 <Button

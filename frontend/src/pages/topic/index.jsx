@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+
 import DefaultPage from "../../components/DefaultPage";
 import Comment from "../../components/Comments";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Box from "../../components/Box";
 
-import formatDate from "../../utils/formatDate";
 import { getTopicsById } from "../../services/topics/topicsService";
 import { postComment } from "../../services/comments/commentsService";
+
+import formatDate from "../../utils/formatDate";
+
+import { withRouter } from "react-router-dom";
+
 
 import "./style.css";
 
@@ -28,7 +32,7 @@ function Topic({ match }) {
             .catch((err) => console.log(err.response.data));
     }, [topicId]);
 
-    if (!topicDetails) return <p>Loading...</p>;
+    if (!topicDetails) window.location.href = "/"
 
     return (
         <>

@@ -1,14 +1,19 @@
+import React from "react";
+
 import DefaultPage from "../../components/DefaultPage";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import "./style.css";
 
 import { loginReq } from "../../services/auth/authService";
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import jwt_decode from "jwt-decode";
+import "./style.css";
+
 
 function Login() {
     const token = localStorage.getItem("ongame-token");
