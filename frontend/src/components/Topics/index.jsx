@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { TopicsDataContext } from "../../providers/topics";
 import { getTopicsById } from "../../services/topics/topicsService";
-import TopicDetails from "../TopicDetails";
+import TopicDetails from "../../pages/topic";
 import Box from "../Box";
 import "./style.css";
 
