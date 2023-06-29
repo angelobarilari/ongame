@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import DefaultPage from "../DefaultPage";
-import Comment from "../Comments";
-import Header from "../Header";
-import Button from "../Button";
-import Box from "../Box";
+import DefaultPage from "../../components/DefaultPage";
+import Comment from "../../components/Comments";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
+import Box from "../../components/Box";
 
 import formatDate from "../../utils/formatDate";
 import { getTopicsById } from "../../services/topics/topicsService";

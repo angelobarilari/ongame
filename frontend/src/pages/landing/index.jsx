@@ -26,7 +26,7 @@ function Landing() {
                         <span>
                             <h2>Topics</h2>
                             <Button
-                                className="register-btn"
+                                className="create-topic-btn"
                                 margin="unset"
                                 background="var(--purple-1)"
                                 color="var(--white)"
