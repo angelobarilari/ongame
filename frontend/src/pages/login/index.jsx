@@ -14,16 +14,15 @@ import * as yup from "yup";
 import jwt_decode from "jwt-decode";
 import "./style.css";
 
-
 function Login() {
     const token = localStorage.getItem("ongame-token");
     // console.log(token)
-    
+
     if (token) {
         const decodedToken = jwt_decode(token);
-        
+
         if (decodedToken.exp * 1000 > new Date())
-        window.location.href = "/dashboard";
+            window.location.href = "/dashboard";
     }
 
     const LoginSchema = yup.object().shape({

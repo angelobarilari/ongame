@@ -13,7 +13,6 @@ import formatDate from "../../utils/formatDate";
 
 import { withRouter } from "react-router-dom";
 
-
 import "./style.css";
 
 function Topic({ match }) {
@@ -22,7 +21,7 @@ function Topic({ match }) {
     const [newComment, setNewComment] = useState("");
 
     const handleCommentSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         // console.log(newComment, topicId)
         postComment(newComment, topicId);
         setNewComment("");
@@ -34,7 +33,7 @@ function Topic({ match }) {
             .catch((err) => console.log(err.response.data));
     }, [topicId]);
 
-    if (!topicDetails) return <p>Not found</p>
+    if (!topicDetails) return <p>Not found</p>;
 
     return (
         <>

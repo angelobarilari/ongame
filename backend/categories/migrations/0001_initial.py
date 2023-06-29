@@ -15,7 +15,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Category",
             fields=[
-                ("category_id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "category_id",
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ("category", models.CharField(max_length=100)),
                 (
                     "topic",

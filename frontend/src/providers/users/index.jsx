@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const UsersDataContext = createContext([]);
 
-function UserDataProvider ({ children }) {
+function UserDataProvider({ children }) {
     const [user, setUser] = useState([]);
 
     return (
@@ -15,6 +15,6 @@ function UserDataProvider ({ children }) {
             {children}
         </UsersDataContext.Provider>
     );
-};
+}
 
-export { UsersDataContext, UserDataProvider }
+export { UsersDataContext, UserDataProvider };

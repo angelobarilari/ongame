@@ -16,19 +16,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Topic",
             fields=[
-                ("topic_id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "topic_id",
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ("subject", models.TextField()),
                 (
                     "created_at",
                     models.DateTimeField(
                         default=datetime.datetime(
-                            2023, 6, 18, 21, 6, 51, 192750, tzinfo=datetime.timezone.utc
+                            2023,
+                            6,
+                            18,
+                            21,
+                            6,
+                            51,
+                            192750,
+                            tzinfo=datetime.timezone.utc,
                         )
                     ),
                 ),
                 (
                     "topicImage",
-                    models.ImageField(blank=True, null=True, upload_to="topicImage/"),
+                    models.ImageField(
+                        blank=True, null=True, upload_to="topicImage/"
+                    ),
                 ),
                 (
                     "author",

@@ -25,12 +25,11 @@ class UserViewsTestCase(TestCase):
             "name": "John",
             "surname": "Doe",
             "gender": "Male",
-            'birthdate': timezone.make_aware(datetime.datetime(1990, 1, 1))
+            "birthdate": timezone.make_aware(datetime.datetime(1990, 1, 1)),
         }
 
         response = self.client.post(
-            f"{self.users_base_url}register/user/",
-            data=data
+            f"{self.users_base_url}register/user/", data=data
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -43,41 +42,39 @@ class UserViewsTestCase(TestCase):
 
     def test_create_admin(self):
         admin_user = User.objects.create(
-            username='admin@admin.com',
-            password=make_password('admin'),
-            name='Admin',
-            surname='Admin',
-            gender='Male',
+            username="admin@admin.com",
+            password=make_password("admin"),
+            name="Admin",
+            surname="Admin",
+            gender="Male",
             birthdate=timezone.now().date(),
-            is_staff=True
+            is_staff=True,
         )
 
         token = AccessToken.for_user(admin_user)
 
         headers = {
-            'Authorization': f'Bearer {token}',
+            "Authorization": f"Bearer {token}",
         }
 
         data = {
-            'username': 'admin2@example.com',
-            'password': 'password123',
-            'name': 'Admin 2',
-            'surname': 'User',
-            'gender': 'Female',
-            'birthdate': timezone.make_aware(datetime.datetime(1990, 1, 1))
+            "username": "admin2@example.com",
+            "password": "password123",
+            "name": "Admin 2",
+            "surname": "User",
+            "gender": "Female",
+            "birthdate": timezone.make_aware(datetime.datetime(1990, 1, 1)),
         }
 
         # Criar um novo administrador
         response = self.client.post(
-            f"{self.users_base_url}register/admin/", 
-            data=data, 
-            headers=headers
+            f"{self.users_base_url}register/admin/", data=data, headers=headers
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(User.objects.count(), 2) 
+        self.assertEqual(User.objects.count(), 2)
 
-        user = User.objects.get(username='admin2@example.com')
+        user = User.objects.get(username="admin2@example.com")
 
         self.assertEqual(user.is_staff, True)
 
@@ -137,10 +134,7 @@ class UserViewsTestCase(TestCase):
             "Content-Type": "application/json",
         }
 
-        data = {
-            "name": "Updated Name", 
-            "surname": "Updated Surname"
-        }
+        data = {"name": "Updated Name", "surname": "Updated Surname"}
 
         response = self.client.patch(
             f"{self.users_base_url}{user.user_id}/",

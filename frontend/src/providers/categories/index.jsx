@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const CategoriesDataContext = createContext([]);
 
-function CategoriesDataProvider ({ children }) {
+function CategoriesDataProvider({ children }) {
     const [categories, setCategories] = useState([]);
 
     return (
@@ -15,6 +15,6 @@ function CategoriesDataProvider ({ children }) {
             {children}
         </CategoriesDataContext.Provider>
     );
-};
+}
 
-export { CategoriesDataContext, CategoriesDataProvider }
+export { CategoriesDataContext, CategoriesDataProvider };
