@@ -17,11 +17,14 @@ import "./style.css";
 
 function Login() {
     const token = localStorage.getItem("ongame-token");
-    const decodedToken = jwt_decode(token);
-
-    if (token)
+    // console.log(token)
+    
+    if (token) {
+        const decodedToken = jwt_decode(token);
+        
         if (decodedToken.exp * 1000 > new Date())
-            window.location.href = "/home";
+        window.location.href = "/dashboard";
+    }
 
     const LoginSchema = yup.object().shape({
         username: yup.string().required("Enter with username"),
@@ -82,9 +85,9 @@ function Login() {
                         <Button
                             className="login-btn"
                             minWidth="100%"
-                            background="var(--purple-1)"
+                            background="var(--orange-1)"
                             color="var(--white)"
-                            hover="var(--purple-2)"
+                            hover="var(--orange-2)"
                             type="submit"
                             onSubmit={() => loginReq()}
                         >

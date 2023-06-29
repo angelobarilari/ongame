@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const TopicsDataContext = createContext([]);
 
-const TopicsDataProvider = ({ children }) => {
+function TopicsDataProvider ({ children }) {
     const [topics, setTopics] = useState([]);
 
     return (

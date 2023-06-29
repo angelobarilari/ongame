@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const CategoriesDataContext = createContext([]);
 
-const CategoriesDataProvider = ({ children }) => {
+function CategoriesDataProvider ({ children }) {
     const [categories, setCategories] = useState([]);
 
     return (

@@ -4,7 +4,7 @@ import Register from "../pages/register";
 import Landing from "../pages/landing";
 import Login from "../pages/login";
 import Topic from "../pages/topic";
-import Home from "../pages/home";
+import Dashboard from "../pages/dashboard";
 
 function Routes() {
     return (
@@ -22,8 +22,8 @@ function Routes() {
                     <Login />
                 </Route>
 
-                <Route exact path="/home">
-                    <Home />
+                <Route exact path="/dashboard">
+                    <Dashboard />
                 </Route>
 
                 <Route exact path="/newtopic">

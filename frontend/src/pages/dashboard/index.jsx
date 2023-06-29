@@ -14,7 +14,7 @@ import formatDate from "../../utils/formatDate";
 import jwt_decode from "jwt-decode";
 import "./style.css";
 
-function Home() {
+function Dashboard() {
     const token = localStorage.getItem("ongame-token");
     const decodedToken = jwt_decode(token);
 
@@ -56,8 +56,8 @@ function Home() {
         <>
             <Header />
 
-            <DefaultPage className="home-page">
-                <Box className="home-box" minWidth="30%" height="70%">
+            <DefaultPage className="dashboard-page">
+                <Box className="dashboard-box" minWidth="30%" height="70%">
                     <div className="sign-text-box">
                         <h2>My data</h2>
                         <hr />
@@ -133,23 +133,26 @@ function Home() {
                                 formatDate(user.birthdate)
                             )}
                         </p>
-                        <div className="edit-box-btns">
+                        <Box className="edit-box-btns" shadow="unset">
                             {editing ? (
                                 <>
-                                    <Button 
+                                    <Button
+                                        width="80%"
                                         children={"Save Changes"}
                                         onClick={handleSaveChanges} />
                                         
                                     <Button 
+                                        width="20%"
                                         children={"Cancel"}
                                         onClick={() => setEditing(false)} />
                                 </>
                             ) : (
                                 <Button 
+                                    width="100%"
                                     children={"Edit"}
                                     onClick={handleEditProfile} />
                             )}
-                        </div>
+                        </Box   >
                     </Box>
                 </Box>
             </DefaultPage>
@@ -157,4 +160,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Dashboard;

@@ -1,11 +1,11 @@
-.home-page {
+.dashboard-page {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.home-box {
+.dashboard-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

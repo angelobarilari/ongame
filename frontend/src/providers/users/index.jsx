@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const UsersDataContext = createContext([]);
 
-const UserDataProvider = ({ children }) => {
+function UserDataProvider ({ children }) {
     const [user, setUser] = useState([]);
 
     return (

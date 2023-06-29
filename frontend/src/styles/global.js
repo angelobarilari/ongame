@@ -19,8 +19,8 @@ export default createGlobalStyle`
         --grey-6: rgb(114, 114, 120);
         --white: #fff;
         --black: #000;
-        --purple-1: rgb(169, 112, 255);
-        --purple-2: rgb(119, 44, 232);
+        --orange-1: rgb(253, 116, 24);
+        --orange-2: rgb(254, 156, 90);
     }
 
     body {

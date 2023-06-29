@@ -31,9 +31,9 @@ function Landing() {
                             <Button
                                 className="create-topic-btn"
                                 margin="unset"
-                                background="var(--purple-1)"
+                                background="var(--orange-1)"
                                 color="var(--white)"
-                                hover="var(--purple-2)"
+                                hover="var(--orange-2)"
                                 children={"Create topic"}
                                 type="submit"
                                 onClick={() =>
@@ -56,9 +56,9 @@ function Landing() {
                     <Button
                         className="login-btn"
                         minWidth="100%"
-                        background="var(--purple-1)"
+                        background="var(--orange-1)"
                         color="var(--white)"
-                        hover="var(--purple-2)"
+                        hover="var(--orange-2)"
                         children={"Login"}
                         onClick={() => (window.location.href = "/login")}
                     />
@@ -66,9 +66,9 @@ function Landing() {
                     <Button
                         className="register-btn"
                         minWidth="100%"
-                        background="var(--purple-1)"
+                        background="var(--orange-1)"
                         color="var(--white)"
-                        hover="var(--purple-2)"
+                        hover="var(--orange-2)"
                         children={"Register"}
                         onClick={() => (window.location.href = "/register")}
                     />

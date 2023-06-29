@@ -1,4 +1,4 @@
-const formatDate = (dateString) => {
+function formatDate(dateString) {
     const date = new Date(dateString);
     return `${date.getDate()}/${
         date.getMonth() + 1
