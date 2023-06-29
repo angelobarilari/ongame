@@ -139,20 +139,23 @@ function Dashboard() {
                                     <Button
                                         width="80%"
                                         children={"Save Changes"}
-                                        onClick={handleSaveChanges} />
-                                        
-                                    <Button 
+                                        onClick={handleSaveChanges}
+                                    />
+
+                                    <Button
                                         width="20%"
                                         children={"Cancel"}
-                                        onClick={() => setEditing(false)} />
+                                        onClick={() => setEditing(false)}
+                                    />
                                 </>
                             ) : (
-                                <Button 
+                                <Button
                                     width="100%"
                                     children={"Edit"}
-                                    onClick={handleEditProfile} />
+                                    onClick={handleEditProfile}
+                                />
                             )}
-                        </Box   >
+                        </Box>
                     </Box>
                 </Box>
             </DefaultPage>

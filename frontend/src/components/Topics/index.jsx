@@ -5,7 +5,7 @@ import TopicDetails from "../../pages/topic";
 import Box from "../Box";
 import "./style.css";
 
-function Topics () {
+function Topics() {
     const { topics } = useContext(TopicsDataContext);
     const [selectedTopicId, setSelectedTopicId] = useState(null);
     const [topicDetails, setTopicDetails] = useState(null);
@@ -47,6 +47,6 @@ function Topics () {
             )}
         </>
     );
-};
+}
 
 export default Topics;

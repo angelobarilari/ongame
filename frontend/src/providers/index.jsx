@@ -2,7 +2,7 @@ import { CategoriesDataProvider } from "./categories";
 import { TopicsDataProvider } from "./topics";
 import { UserDataProvider } from "./users";
 
-function Provider ({ children })  {
+function Provider({ children }) {
     return (
         <TopicsDataProvider>
             <CategoriesDataProvider>
@@ -10,6 +10,6 @@ function Provider ({ children })  {
             </CategoriesDataProvider>
         </TopicsDataProvider>
     );
-};
+}
 
 export default Provider;

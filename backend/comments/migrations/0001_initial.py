@@ -17,13 +17,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Comment",
             fields=[
-                ("comment_id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "comment_id",
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ("content", models.TextField()),
                 (
                     "created_at",
                     models.DateTimeField(
                         default=datetime.datetime(
-                            2023, 6, 18, 21, 6, 51, 193731, tzinfo=datetime.timezone.utc
+                            2023,
+                            6,
+                            18,
+                            21,
+                            6,
+                            51,
+                            193731,
+                            tzinfo=datetime.timezone.utc,
                         )
                     ),
                 ),
