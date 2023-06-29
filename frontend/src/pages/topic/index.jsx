@@ -12,7 +12,7 @@ import { postComment } from "../../services/comments/commentsService";
 
 import "./style.css";
 
-function TopicDetailsPage({ match }) {
+function Topic({ match }) {
     const topicId = match.params.topicId;
     const [topicDetails, setTopicDetails] = useState(null);
     const [newComment, setNewComment] = useState("");
@@ -95,4 +95,4 @@ function TopicDetailsPage({ match }) {
     );
 }
 
-export default withRouter(TopicDetailsPage);
+export default withRouter(Topic);

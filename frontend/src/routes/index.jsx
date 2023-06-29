@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
-import Login from "../pages/login";
-import Home from "../pages/home";
-import Landing from "../pages/landing";
+import CreateTopic from "../pages/new-topic";
 import Register from "../pages/register";
-import TopicDetailsPage from "../components/TopicDetails";
-import NewTopic from "../components/NewTopic";
+import Landing from "../pages/landing";
+import Login from "../pages/login";
+import Topic from "../pages/topic";
+import Home from "../pages/home";
 
 function Routes() {
     return (
@@ -27,11 +27,11 @@ function Routes() {
                 </Route>
 
                 <Route exact path="/newtopic">
-                    <NewTopic />
+                    <CreateTopic />
                 </Route>
 
                 <Route exact path="/topics/:topicId">
-                    <TopicDetailsPage />
+                    <Topic />
                 </Route>
             </Switch>
         </>

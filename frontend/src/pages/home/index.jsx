@@ -1,14 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
+
 import DefaultPage from "../../components/DefaultPage";
+import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
-import { UsersDataContext } from "../../providers/users";
+
 import { getUserById, updateUserById } from "../../services/users/usersService";
+
+import { UsersDataContext } from "../../providers/users";
+
 import formatDate from "../../utils/formatDate";
 
 import jwt_decode from "jwt-decode";
 import "./style.css";
-import Button from "../../components/Button";
 
 function Home() {
     const token = localStorage.getItem("ongame-token");

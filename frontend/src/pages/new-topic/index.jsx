@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
-import DefaultPage from "../DefaultPage";
-import Header from "../Header";
-import Button from "../Button";
-import Box from "../Box";
+import DefaultPage from "../../components/DefaultPage";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
+import Box from "../../components/Box";
 import { postTopic } from "../../services/topics/topicsService";
 import { CategoriesDataContext } from "../../providers/categories";
 import { getCategories } from "../../services/categories/categoriesService";
 import "./style.css";
 
-function NewTopic() {
+function CreateTopic() {
     const [subject, setSubject] = useState("");
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
@@ -96,4 +96,4 @@ function NewTopic() {
     );
 }
 
-export default NewTopic;
+export default CreateTopic;
