@@ -17,7 +17,7 @@ export const StyledHeader = styled.header`
 
     border-radius: 5px;
 
-    #header-container {
+    .header-container {
         background-color: var(--grey-2);
         width: 80%;
         height: 100%;
@@ -25,5 +25,6 @@ export const StyledHeader = styled.header`
         display: flex;
         align-items: center;
         justify-content: space-between;
+
     }
 `;

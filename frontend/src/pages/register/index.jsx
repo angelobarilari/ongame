@@ -1,23 +1,20 @@
+import React from "react";
+
 import DefaultPage from "../../components/DefaultPage";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
-import apiUrl from "../../services/api";
 import parseDateString from "../../utils/parseDateString";
-import { loginReq } from "../../services/auth/authService";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
+
+import { registerReq } from "../../services/auth/authService";
+
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
+import * as yup from "yup";
 import "./style.css";
 
 function Register() {
-    const registerReq = (formdata) => {
-        apiUrl
-            .post("users/register/user/", formdata)
-            .then((res) => loginReq(formdata))
-            .catch((err) => console.log(err.response.data));
-    };
-
     const RegisterSchema = yup.object().shape({
         username: yup.string().required("Enter with username"),
         password: yup.string().required("Enter with password"),

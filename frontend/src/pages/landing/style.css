@@ -1,6 +1,5 @@
 .landing-page {
     display: flex;
-    background-color: red;
 }
 
 .topics-box {
@@ -26,4 +25,3 @@
     display: flex;
     justify-content: space-between;
 }
-

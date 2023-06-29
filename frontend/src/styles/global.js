@@ -35,35 +35,4 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
-
-    // input, select {
-    //     width: 100%;
-    //     padding: 10px;
-
-    //     background-color: var(--grey-2);
-        
-    //     border-radius: 4px;
-    //     border: 1.22px solid var(--grey-0);
-        
-    //     color: #fff;
-    // }
-
-    // select {
-    //     padding-rigth: 20px;
-    //     color: rgb(117, 117, 117)
-    // }
-    
-    // form {
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: space-around;
-    //     align-items: center;
-    //     gap: 30px;
-    
-    //     padding-top: 20px;
-
-    //     border-radius: 8px;
-
-    //     width: 100%
-    // }
 `;
