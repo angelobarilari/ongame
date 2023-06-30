@@ -1,5 +1,5 @@
 import apiUrl from "../api";
-import jwt_decode from "jwt-decode"
+import jwt_decode from "jwt-decode";
 
 export const loginReq = (formdata) => {
     const data = {
@@ -29,9 +29,8 @@ export const verifyJwtIsValid = () => {
     if (token) {
         const decodedToken = jwt_decode(token);
 
-        if (decodedToken.exp * 1000 > new Date())
-            return decodedToken
+        if (decodedToken.exp * 1000 > new Date()) return decodedToken;
     }
 
-    return false
-}
+    return false;
+};

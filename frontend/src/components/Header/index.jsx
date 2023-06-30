@@ -1,12 +1,12 @@
 import { StyledHeader } from "./style";
 
-import { verifyJwtIsValid } from "../../services/auth/authService"
+import { verifyJwtIsValid } from "../../services/auth/authService";
 
 import Button from "../Button";
 import Box from "../Box";
 
 function Header({ children, ...rest }) {
-    const token = verifyJwtIsValid()
+    const token = verifyJwtIsValid();
 
     const handleLogout = () => {
         localStorage.removeItem("ongame-token");
