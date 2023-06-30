@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import Box from "../Box";
+import Box from ".";
 
 describe("Box component", () => {
     test("should render Box correctly", () => {

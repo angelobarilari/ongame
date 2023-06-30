@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import DefaultPage from "../DefaultPage";
+import DefaultPage from ".";
 
 describe("DefaultPage component", () => {
     test("should render DefaultPage correctly", () => {
