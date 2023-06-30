@@ -1,21 +1,17 @@
+import SubHeader from "../SubHeader";
 import Box from "../Box";
+import { StyledComment } from "./style";
 import formatDate from "../../utils/formatDate";
-import "./style.css";
 
-function Comment({ comment }) {
+function Comment({ children, rest }) {
+    console.log(children);
     return (
-        <>
-            <Box className="comment">
-                <div className="sign-text-box topics-text-box">
-                    <span>
-                        <p>{comment.author.username}</p>
-                        <p>{formatDate(comment.created_at)}</p>
-                    </span>
-                    <hr />
-                    {comment.content}
-                </div>
-            </Box>
-        </>
+        <StyledComment {...rest}>
+            <SubHeader className="" text={children.author.username}>
+                <p>{formatDate(children.created_at)}</p>
+            </SubHeader>
+            <p>{children.content}</p>
+        </StyledComment>
     );
 }
 
