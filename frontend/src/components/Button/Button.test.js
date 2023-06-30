@@ -1,19 +1,28 @@
+import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import Button from "../Button";
 
 describe("Button component", () => {
-    test("renders button correctly", () => {
+    test("should render Button correctly", () => {
         render(<Button>random text</Button>);
 
-        const buttonElement = screen.getByText(/random text/i);
+        const buttonElement = screen.getByText("random text");
         expect(buttonElement).toBeInTheDocument();
         expect(buttonElement.textContent).toBe("random text");
     });
 
-    test("applies props correctly", () => {
+    test("should render children correctly", () => {
+        render(<Button>Click me</Button>);
+
+        const buttonElement = screen.getByText("Click me");
+        expect(buttonElement).toBeInTheDocument();
+        expect(buttonElement.textContent).toBe("Click me");
+    });
+
+    test("renders with props correctly", () => {
         render(<Button data-testid="test-button" background="red" />);
 
-        const boxElement = screen.getByTestId("test-button");
-        expect(boxElement).toHaveStyle("background: red");
+        const buttonElement = screen.getByTestId("test-button");
+        expect(buttonElement).toHaveStyle("background: red");
     });
 });
