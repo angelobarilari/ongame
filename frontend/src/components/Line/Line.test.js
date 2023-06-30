@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import Line from "../Line";
+import Line from ".";
 
 describe("Line component", () => {
     test("should render Line correctly", () => {

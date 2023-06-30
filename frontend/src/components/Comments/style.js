@@ -4,6 +4,7 @@ export const StyledComment = styled.div`
     display: flex;
     flex-direction: column;
 
+    width: ${(props) => props.width || "unset%"}
     padding: 5px 10px;
     border-radius: 5px;
 
