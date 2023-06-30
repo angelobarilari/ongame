@@ -28,7 +28,9 @@ function CreateTopic() {
     const handleTopicSubmit = (event) => {
         event.preventDefault();
         postTopic(subject, content, category);
+        setSubject("");
         setContent("");
+        setCategory("");
     };
 
     return (
@@ -36,7 +38,7 @@ function CreateTopic() {
             <Header />
             <DefaultPage className="new-topic-page">
                 <Box className="new-topic-box" minWidth="30%" height="70%">
-                    <SubHeader width="90%" text={"New post"}/>
+                    <SubHeader width="90%" text={"New post"} />
 
                     <form className="topic-form" onSubmit={handleTopicSubmit}>
                         <div className="input-container">

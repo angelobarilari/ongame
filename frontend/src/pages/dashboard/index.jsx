@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import Box from "../../components/Box";
 
 import { getUserById, updateUserById } from "../../services/users/usersService";
-import { verifyJwtIsValid } from "../../services/auth/authService"
+import { verifyJwtIsValid } from "../../services/auth/authService";
 
 import { UsersDataContext } from "../../providers/users";
 
@@ -16,7 +16,7 @@ import formatDate from "../../utils/formatDate";
 import "./style.css";
 
 function Dashboard() {
-    const token = verifyJwtIsValid()
+    const token = verifyJwtIsValid();
 
     const { user, setUser } = useContext(UsersDataContext);
     const [editing, setEditing] = useState(false);
@@ -55,8 +55,11 @@ function Dashboard() {
                     <Header />
 
                     <DefaultPage className="dashboard-page">
-
-                        <Box className="dashboard-box" minWidth="30%" height="70%">
+                        <Box
+                            className="dashboard-box"
+                            minWidth="30%"
+                            height="70%"
+                        >
                             <SubHeader width="90%" text={"My data"} />
                             <Box
                                 className="user-data-box"
@@ -149,7 +152,9 @@ function Dashboard() {
                                                 color="var(--white)"
                                                 hover="var(--orange-2)"
                                                 children={"Cancel"}
-                                                onClick={() => setEditing(false)}
+                                                onClick={() =>
+                                                    setEditing(false)
+                                                }
                                             />
                                         </>
                                     ) : (
@@ -169,7 +174,7 @@ function Dashboard() {
                     </DefaultPage>
                 </>
             ) : (
-                window.location.href = "/"
+                (window.location.href = "/")
             )}
         </>
     );
