@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import DefaultPage from "../../components/DefaultPage";
+import SubHeader from "../../components/SubHeader";
 import Comment from "../../components/Comments";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -22,7 +23,6 @@ function Topic({ match }) {
 
     const handleCommentSubmit = (event) => {
         event.preventDefault();
-        // console.log(newComment, topicId)
         postComment(newComment, topicId);
         setNewComment("");
     };
@@ -42,27 +42,18 @@ function Topic({ match }) {
             <DefaultPage className="topic-details-page">
                 <Box className="topic-box" minWidth="80%" height="97%">
                     <Box className="topic-content" minWidth="80%">
-                        <div className="sign-text-box topics-text-box">
-                            <span>
-                                <h2>{topicDetails.subject}</h2>
-                                <p>Author: {topicDetails.author.username}</p>
-                            </span>
-                            <hr />
-                        </div>
+                        <SubHeader
+                            className="topic-details-sub-header"
+                            text={topicDetails.subject}
+                        >
+                            <p>Author: {topicDetails.author.username}</p>
+                            <p>{formatDate(topicDetails.created_at)}</p>
+                        </SubHeader>
 
-                        <div className="sign-text-box topics-text-box">
-                            <span>
-                                <p>{formatDate(topicDetails.created_at)}</p>
-                            </span>
-                            <hr />
-                        </div>
-
-                        <div className="topic-comments">
-                            {topicDetails.content}
-                            {topicDetails.comments.map((comment) => (
-                                <Comment key={comment.id} comment={comment} />
-                            ))}
-                        </div>
+                        {topicDetails.content}
+                        {topicDetails.comments.map((comment) => (
+                            <Comment children={comment} />
+                        ))}
                     </Box>
 
                     <Box className="topic-section">
@@ -89,9 +80,8 @@ function Topic({ match }) {
                                 color="var(--white)"
                                 hover="var(--orange-2)"
                                 type="submit"
-                            >
-                                Comment
-                            </Button>
+                                children={"Comment"}
+                            />
                         </form>
                     </Box>
                 </Box>

@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import { StyledHeader } from "./style";
+
+import { verifyJwtIsValid } from "../../services/auth/authService"
+
 import Button from "../Button";
 import Box from "../Box";
 
 function Header({ children, ...rest }) {
-    const token = localStorage.getItem("ongame-token");
+    const token = verifyJwtIsValid()
 
     const handleLogout = () => {
         localStorage.removeItem("ongame-token");
@@ -14,9 +16,9 @@ function Header({ children, ...rest }) {
     return (
         <StyledHeader {...rest}>
             <Box className="header-container" shadow="unset">
-                <Link to="/" className="logo-container">
+                <a href="/" className="logo-container">
                     <h1 className="logo">OnGame Forum</h1>
-                </Link>
+                </a>
             </Box>
 
             {token ? (

@@ -1,29 +1,28 @@
 import React from "react";
 
 import DefaultPage from "../../components/DefaultPage";
+import SubHeader from "../../components/SubHeader";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
 
-import { loginReq } from "../../services/auth/authService";
+import { loginReq, verifyJwtIsValid } from "../../services/auth/authService";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import jwt_decode from "jwt-decode";
 import "./style.css";
 
 function Login() {
-    const token = localStorage.getItem("ongame-token");
-    // console.log(token)
+    // const token = localStorage.getItem("ongame-token");
 
-    if (token) {
-        const decodedToken = jwt_decode(token);
+    // if (token) {
+    //     const decodedToken = jwt_decode(token);
 
-        if (decodedToken.exp * 1000 > new Date())
-            window.location.href = "/dashboard";
-    }
+    //     if (decodedToken.exp * 1000 > new Date())
+    //         window.location.href = "/dashboard";
+    // }
 
     const LoginSchema = yup.object().shape({
         username: yup.string().required("Enter with username"),
@@ -44,10 +43,7 @@ function Login() {
 
             <DefaultPage className="login-page">
                 <Box className="login-box" minWidth="30%" height="fit-content%">
-                    <div className="sign-text-box">
-                        <h2>Sign into OnGame Forum</h2>
-                        <hr />
-                    </div>
+                    <SubHeader width="90%" text={"Sign into OnGame forum"} />
 
                     <form
                         className="login-form"
@@ -88,10 +84,9 @@ function Login() {
                             color="var(--white)"
                             hover="var(--orange-2)"
                             type="submit"
+                            children={"Login in OnGame"}
                             onSubmit={() => loginReq()}
-                        >
-                            Login in OnGame
-                        </Button>
+                        />
                     </form>
                 </Box>
             </DefaultPage>

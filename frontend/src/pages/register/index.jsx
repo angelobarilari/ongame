@@ -1,9 +1,11 @@
 import React from "react";
 
 import DefaultPage from "../../components/DefaultPage";
+import SubHeader from "../../components/SubHeader";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
+
 import parseDateString from "../../utils/parseDateString";
 
 import { registerReq } from "../../services/auth/authService";
@@ -41,10 +43,7 @@ function Register() {
                     minWidth="30%"
                     height="fit-content%"
                 >
-                    <div className="register-text-box">
-                        <h2>Sign up</h2>
-                        <hr />
-                    </div>
+                    <SubHeader width="90%" text={"Sign up"} />
 
                     <form
                         className="register-form"

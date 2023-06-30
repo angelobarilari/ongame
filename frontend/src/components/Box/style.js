@@ -9,6 +9,7 @@ export const StyledBox = styled.div`
     height: ${(props) => props.height || "unset"};
     margin: ${(props) => props.margin || "10px"};
 
+    padding: 5px 10px;
     border-radius: 5px;
 
     background-color: ${(props) => props.background || "unset"};

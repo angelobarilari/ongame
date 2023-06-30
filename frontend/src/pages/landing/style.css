@@ -13,15 +13,16 @@
     flex-direction: column;
     justify-content: center;
     background-color: var(--grey-3);
-    padding: 5px;
 }
 
-.sign-up-text-box {
-    width: 100%;
+.topics-sub-header {
+    padding: 5px 10px;
 }
 
-.topics-text-box > span {
-    width: 100%;
+.topics {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    padding: 10px;
+    height: fit-content;
 }

@@ -12,16 +12,9 @@
     background-color: var(--grey-3);
 }
 
-.topics-text-box {
-    display: flex;
-    width: 100%;
-    padding:  6px 10px 0px 10px;
-}
-
-.topics-text-box > span {
+.topic-details-sub-header > span {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .topic-content {
@@ -30,9 +23,12 @@
     background-color: var(--grey-4);
     height: 97%;
     width: 80%;
+    overflow-y: auto;
 }
 
 .topic-comments {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     overflow-y: auto;
 }

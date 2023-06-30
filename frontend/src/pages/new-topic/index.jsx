@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 
 import DefaultPage from "../../components/DefaultPage";
+import SubHeader from "../../components/SubHeader";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Box from "../../components/Box";
@@ -35,13 +36,10 @@ function CreateTopic() {
             <Header />
             <DefaultPage className="new-topic-page">
                 <Box className="new-topic-box" minWidth="30%" height="70%">
-                    <div className="sign-text-box">
-                        <h2>New post</h2>
-                        <hr />
-                    </div>
+                    <SubHeader width="90%" text={"New post"}/>
 
                     <form className="topic-form" onSubmit={handleTopicSubmit}>
-                        <div className="input-container topic-input">
+                        <div className="input-container">
                             <input
                                 className="input"
                                 type="text"
@@ -53,7 +51,7 @@ function CreateTopic() {
                             />
                         </div>
 
-                        <div className="input-container topic-input">
+                        <div className="input-container">
                             <select
                                 className="input"
                                 onChange={(event) =>
