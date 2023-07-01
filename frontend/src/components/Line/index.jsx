@@ -1,7 +1,7 @@
 import { StyledLine } from "./style";
 
-function Line({ children, ...rest }) {
-    return <StyledLine {...rest}>{children}</StyledLine>;
+function Line({ ...rest }) {
+    return <StyledLine {...rest} />;
 }
 
 export default Line;

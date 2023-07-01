@@ -11,14 +11,14 @@ export default createGlobalStyle`
     }
 
     :root {
+        --white: #fff;
+        --black: #000;
         --grey-1: rgb(14, 14, 16);
         --grey-2: rgb(24, 24, 27);
         --grey-3: rgb(47, 47, 53);
         --grey-4: rgb(53, 53, 59);
         --grey-5: rgb(61, 61, 64);
         --grey-6: rgb(114, 114, 120);
-        --white: #fff;
-        --black: #000;
         --orange-1: rgb(253, 116, 24);
         --orange-2: rgb(254, 156, 90);
     }

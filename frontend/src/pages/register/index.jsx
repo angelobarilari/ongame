@@ -14,6 +14,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
+
 import "./style.css";
 
 function Register() {

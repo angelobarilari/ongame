@@ -1,17 +1,28 @@
+import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import Box from "../Box";
+import Box from ".";
 
-test("Box Component", () => {
-    render(<Box>random text</Box>);
+describe("Box component", () => {
+    test("should render Box correctly", () => {
+        render(<Box>random text</Box>);
 
-    const boxElement = screen.getByText(/random text/i);
-    expect(boxElement).toBeInTheDocument();
-    expect(boxElement.textContent).toBe("random text");
-});
+        const boxElement = screen.getByText("random text");
+        expect(boxElement).toBeInTheDocument();
+        expect(boxElement).toHaveClass("sc-bdVaJa");
+    });
 
-test("applies props correctly", () => {
-    render(<Box data-testid="test-box" background="red" />);
+    test("should render children correctly", () => {
+        render(<Box>random text</Box>);
 
-    const boxElement = screen.getByTestId("test-box");
-    expect(boxElement).toHaveStyle("background: red");
+        const boxElement = screen.getByText("random text");
+        expect(boxElement).toBeInTheDocument();
+        expect(boxElement.textContent).toBe("random text");
+    });
+
+    test("renders with props correctly", () => {
+        render(<Box data-testid="test-box" background="red" />);
+
+        const boxElement = screen.getByTestId("test-box");
+        expect(boxElement).toHaveStyle("background: red");
+    });
 });

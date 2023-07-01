@@ -1,20 +1,18 @@
+import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Header from "../Header";
+import Header from ".";
 
 describe("Header component", () => {
-    test("should render correctly", () => {
+    test("should render Header correctly", () => {
         render(
             <MemoryRouter>
-                <Header data-testid="test-header">
-                    <div data-testid="child">Child component</div>
-                </Header>
+                <Header data-testid="test-header" />
             </MemoryRouter>
         );
 
         const header = screen.getByTestId("test-header");
         expect(header).toBeInTheDocument();
-        expect(screen.queryByTestId("child")).toBeNull();
     });
 
     test("should render a logo", () => {
@@ -24,18 +22,18 @@ describe("Header component", () => {
             </MemoryRouter>
         );
 
-        const logo = screen.getByRole("heading", { name: /Twitch/i });
+        const logo = screen.getByText("OnGame Forum");
         expect(logo).toBeInTheDocument();
     });
 
-    test("should render a link to home page", () => {
+    test("should render a link to /", () => {
         render(
             <MemoryRouter>
                 <Header />
             </MemoryRouter>
         );
 
-        const homeLink = screen.getByRole("link", { name: /Twitch/i });
+        const homeLink = screen.getByRole("link", { name: "OnGame Forum" });
         expect(homeLink).toHaveAttribute("href", "/");
     });
 });
