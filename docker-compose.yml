@@ -16,6 +16,7 @@ services:
     command: >
       sh -c "python manage.py migrate &&
              python manage.py createadmin &&
+             python manage.py createcategory &&
              python manage.py runserver 0.0.0.0:8000"
     env_file:
       - .env
@@ -32,11 +33,11 @@ services:
   #   command: >
   #     sh -c "npm run dev"
 
-  db:
-    image: postgres
-    ports:
-      - "${POSTGRES_PORT}"
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USERNAME}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  # db:
+  #   image: postgres
+  #   ports:
+  #     - "${POSTGRES_PORT}"
+  #   environment:
+  #     - POSTGRES_DB=${POSTGRES_DB}
+  #     - POSTGRES_USER=${POSTGRES_USERNAME}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
