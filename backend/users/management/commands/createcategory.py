@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 )
 
                 self.stdout.write(
-                    self.style.SUCCESS("Category user successfully created.")
+                    self.style.SUCCESS("Category successfully created.")
                 )
             else:
                 self.stdout.write(
