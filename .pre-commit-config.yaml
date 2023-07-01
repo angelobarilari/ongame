@@ -1,5 +1,6 @@
 repos:
   - repo: local
+    hooks:
       - id: prettier
         name: prettier
         entry: npx
@@ -23,4 +24,3 @@ repos:
         pass_filenames: false
         files: backend/
         exclude: migrations/, staticfiles/, venv/, .*\.pyc$, .*\.pyo$, .*\.egg-info/
-
