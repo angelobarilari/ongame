@@ -17,23 +17,14 @@ services:
       sh -c "python manage.py migrate &&
              python manage.py createadmin &&
              python manage.py runserver 0.0.0.0:8000"
-             
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./frontend:/app
-  #   depends_on:
-  #     - backend
-
+    env_file:
+      - .env
+      
   db:
     image: postgres
     ports:
-      - "5432:5432"
+      - ${POSTGRES_PORT}
     environment:
-      POSTGRES_DB: ongame
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
