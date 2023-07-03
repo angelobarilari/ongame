@@ -10,6 +10,6 @@
 
 #### 4. While docker compose started an admin user was created in the db. You must login as admin user (username: admin@admin.com, password: admin) and create categories as only an admin can create them and a topic cannot be created without a category.
 
-###### (One category is created automatically when docker-compose run to make possible to create topics without create categories, just for test)
+###### (One category is created automatically when docker-compose run to make possible to create topics without create categories manually, just for test. You can send to { "category": "my category" } to /api/categories/create
 
 #### 5. You are now ready to test app.
