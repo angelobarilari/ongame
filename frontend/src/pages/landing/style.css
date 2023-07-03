@@ -26,3 +26,14 @@
     padding: 10px;
     height: fit-content;
 }
+
+.topics > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn {
+    margin: 0px 0px 0px 5px;
+}

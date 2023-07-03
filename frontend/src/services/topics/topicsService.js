@@ -26,3 +26,16 @@ export const postTopic = (subject, content, category) => {
         .then((res) => (window.location.href = `/topics/${res.data.topic_id}`))
         .catch((err) => console.log(err.response.data));
 };
+
+export const deleteTopic = (topic_id) => {
+    const token = localStorage.getItem("ongame-token")
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    };
+
+    apiUrl
+        .delete(`topics/${topic_id}`, { headers})
+        .then(res => window.location.href = "/")
+        .catch(err => console.log(err))
+}

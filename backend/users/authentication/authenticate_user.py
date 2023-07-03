@@ -11,6 +11,8 @@ def authenticate_user(email, password):
     if check_password(password, user.password):
         refresh = RefreshToken.for_user(user)
 
+        refresh["is_staff"] = user.is_staff
+        
         return str(refresh.access_token)
 
     return None
