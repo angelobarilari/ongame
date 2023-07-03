@@ -64,7 +64,6 @@ function Login() {
                                 </span>
                             )}
                         </div>
-
                         <div className="input-container">
                             <input
                                 className="input"
@@ -78,7 +77,6 @@ function Login() {
                                 </span>
                             )}
                         </div>
-
                         <Button
                             className="login-btn"
                             minWidth="100%"
@@ -88,6 +86,18 @@ function Login() {
                             type="submit"
                             children={"Login in OnGame"}
                             onSubmit={() => loginReq()}
+                        />
+                        or
+                        <Button
+                            className="register-btn"
+                            minWidth="100%"
+                            background="var(--orange-1)"
+                            color="var(--white)"
+                            hover="var(--orange-2)"
+                            children={"Register"}
+                            onSubmit={() =>
+                                (window.location.href = "/register")
+                            }
                         />
                     </form>
                 </Box>

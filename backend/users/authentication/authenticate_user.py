@@ -12,7 +12,7 @@ def authenticate_user(email, password):
         refresh = RefreshToken.for_user(user)
 
         refresh["is_staff"] = user.is_staff
-        
+
         return str(refresh.access_token)
 
     return None
