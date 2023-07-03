@@ -28,14 +28,14 @@ export const postTopic = (subject, content, category) => {
 };
 
 export const deleteTopic = (topic_id) => {
-    const token = localStorage.getItem("ongame-token")
+    const token = localStorage.getItem("ongame-token");
 
     const headers = {
         Authorization: `Bearer ${token}`,
     };
 
     apiUrl
-        .delete(`topics/${topic_id}`, { headers})
-        .then(res => window.location.href = "/")
-        .catch(err => console.log(err))
-}
+        .delete(`topics/${topic_id}`, { headers })
+        .then((res) => (window.location.href = "/"))
+        .catch((err) => console.log(err));
+};

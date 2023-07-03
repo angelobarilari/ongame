@@ -16,8 +16,8 @@ import "./style.css";
 
 function CreateTopic() {
     const token = verifyJwtIsValid();
-    
-    if (!token) return window.location.href = "/";
+
+    if (!token) return (window.location.href = "/login");
 
     const [subject, setSubject] = useState("");
     const [content, setContent] = useState("");

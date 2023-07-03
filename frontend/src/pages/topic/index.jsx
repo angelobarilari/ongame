@@ -7,7 +7,10 @@ import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Box from "../../components/Box";
 
-import { getTopicsById, deleteTopic } from "../../services/topics/topicsService";
+import {
+    getTopicsById,
+    deleteTopic,
+} from "../../services/topics/topicsService";
 import { verifyJwtIsValid } from "../../services/auth/authService";
 import { postComment } from "../../services/comments/commentsService";
 
@@ -17,9 +20,8 @@ import { withRouter } from "react-router-dom";
 
 import "./style.css";
 
-
 function Topic({ match }) {
-    const token = verifyJwtIsValid()
+    const token = verifyJwtIsValid();
 
     const topicId = match.params.topicId;
     const [topicDetails, setTopicDetails] = useState(null);
@@ -32,8 +34,7 @@ function Topic({ match }) {
     };
 
     const handleDeleteClick = (topic_id) => {
-        if (token.is_staff) 
-            deleteTopic(topic_id)
+        if (token.is_staff) deleteTopic(topic_id);
     };
 
     useEffect(() => {
@@ -57,14 +58,17 @@ function Topic({ match }) {
                         >
                             <p>Author: {topicDetails.author.username}</p>
                             <p>{formatDate(topicDetails.created_at)}</p>
-                            <Button 
+                            <Button
                                 className="delete-btn"
                                 width="10%"
                                 background="var(--orange-1)"
                                 color="var(--white)"
                                 hover="var(--orange-2)"
                                 children={"Delete"}
-                                onClick={() => handleDeleteClick(topicDetails.topic_id)} />
+                                onClick={() =>
+                                    handleDeleteClick(topicDetails.topic_id)
+                                }
+                            />
                         </SubHeader>
 
                         {topicDetails.content}

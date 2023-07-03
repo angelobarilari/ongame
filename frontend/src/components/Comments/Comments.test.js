@@ -20,7 +20,7 @@ describe("Comment component", () => {
     });
 
     test("should render created_at date correctly", () => {
-        formatDate(mockComment.created_at)
+        formatDate(mockComment.created_at);
         render(<Comment>{mockComment}</Comment>);
 
         const dateElement = screen.getByText("1/6/2022 11:30");
