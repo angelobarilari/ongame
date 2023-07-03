@@ -9,6 +9,6 @@ export const postComment = (comment, topicId) => {
 
     apiUrl
         .post(`comments/${topicId}/`, { content: comment }, { headers })
-        .then((res) => console.log(res.data))
+        .then((res) => window.location.reload())
         .catch((err) => console.log(err.response.data));
 };

@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import Box from "../../components/Box";
 
 import { getCategories } from "../../services/categories/categoriesService";
+import { verifyJwtIsValid } from "../../services/auth/authService";
 import { postTopic } from "../../services/topics/topicsService";
 
 import { CategoriesDataContext } from "../../providers/categories";
@@ -14,6 +15,10 @@ import { CategoriesDataContext } from "../../providers/categories";
 import "./style.css";
 
 function CreateTopic() {
+    const token = verifyJwtIsValid();
+    
+    if (!token) return window.location.href = "/";
+
     const [subject, setSubject] = useState("");
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");

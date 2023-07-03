@@ -6,8 +6,8 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Box from "../../components/Box";
 
-import { getTopicsById } from "../../services/topics/topicsService";
-import { getTopics } from "../../services/topics/topicsService";
+import { getTopics, getTopicsById, deleteTopic } from "../../services/topics/topicsService";
+import { verifyJwtIsValid } from "../../services/auth/authService";
 
 import { TopicsDataContext } from "../../providers/topics";
 import TopicDetails from "../topic";
@@ -15,6 +15,8 @@ import TopicDetails from "../topic";
 import "./style.css";
 
 function Landing() {
+    const token = verifyJwtIsValid()
+
     const { topics, setTopics } = useContext(TopicsDataContext);
     const [selectedTopicId, setSelectedTopicId] = useState(null);
     const [topicDetails, setTopicDetails] = useState(null);
@@ -26,6 +28,11 @@ function Landing() {
                 setTopicDetails(response.data);
             })
             .catch((error) => console.log(error.response.data));
+    };
+
+    const handleDeleteClick = (topic_id) => {
+        if (token.is_staff) 
+            deleteTopic(topic_id)
     };
 
     useEffect(() => {
@@ -56,15 +63,27 @@ function Landing() {
                                 className="topics"
                                 minWidth="30%"
                                 key={topic.topic_id}
-                                onClick={() => handleTopicClick(topic.topic_id)}
                             >
                                 <a
                                     className="topic-link"
+                                    onClick={() => handleTopicClick(topic.topic_id)}
                                     href={`/topics/${topic.topic_id}`}
                                 >
                                     {topic.subject}
                                 </a>
-                                <p>{topic.author.username}</p>
+
+                                <span>
+                                    <p>{topic.author.username}</p>
+                                    
+                                    <Button 
+                                        className="delete-btn"
+                                        width="50%"
+                                        background="var(--orange-1)"
+                                        color="var(--white)"
+                                        hover="var(--orange-2)"
+                                        children={"Delete"}
+                                        onClick={() => handleDeleteClick(topic.topic_id)} />
+                                </span>
                             </Box>
                         ))
                     ) : (
